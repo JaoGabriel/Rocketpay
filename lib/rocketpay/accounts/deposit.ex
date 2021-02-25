@@ -1,4 +1,4 @@
-defmodule Rockpay.Accounts.Deposit do
+defmodule Rocketpay.Accounts.Deposit do
 
   alias Ecto.Multi
 
