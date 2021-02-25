@@ -3,6 +3,7 @@ defmodule Rocketpay.User do
   import Ecto.Changeset
 
   alias Ecto.Changeset
+  alias Rocketpay.Account
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -15,6 +16,7 @@ defmodule Rocketpay.User do
     field :password, :string, virtual: true
     field :password_hash, :string
     field :nickname, :string
+    has_one :account, Account
 
     timestamps()
   end
@@ -24,7 +26,7 @@ defmodule Rocketpay.User do
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:password, min: 6)
-    |> validate_number(:age, greater_than: 18)
+    |> validate_number(:age, greater_than: 17)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint([:email])
     |> unique_constraint([:nickname])
