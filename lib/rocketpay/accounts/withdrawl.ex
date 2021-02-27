@@ -11,7 +11,7 @@ defmodule Rocketpay.Accounts.Withdrawl do
   defp run_transaction(multi) do
     case Repo.transaction(multi) do
       {:error, _operation,reason,_changes} -> {:error, reason}
-      {:ok, %{account_withdrawl: account}} -> {:ok, account}
+      {:ok, %{withdrawl: account}} -> {:ok, account}
     end
   end
 
